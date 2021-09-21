@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" />
+    <title>Event Advertisement</title>
+</head>
+<body>
+<h1 align="center">Event Advertisement</h1>
+<p align="right" th:text="'Hello, ' + ${userId} + '!'" ></p>
+<form action="#" th:action="@{/upload/event}" th:object="${eventAdvertisement}" enctype="multipart/form-data" method="post">
+    <table border="2" align="center">
+        <tr>
+            <td>
+                <label for="eventName">Event Name:</label>
+            </td>
+            <td>
+                <input type="text" th:field ="*{eventName}" name="EventName" id="eventName" class="form-control" placeholder="Enter event name" autofocus/>
+                <span  th:if="${isEventNameExist == false}" style="color:red" align="right">Event name cannot be empty</span><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="eventAddress">Event Address:</label>
+            </td>
+            <td>
+                <textarea class="form-control"  id="eventAddress" rows="3" th:field ="*{eventAddress}" autofocus placeholder="Enter complete event address"></textarea>
+                <span  th:if="${isAddressValid == false}" style="color:red" align="right">Please fill the address</span><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="totalTickets">Available event tickets:</label>
+            </td>
+            <td>
+                <input type="text" th:field ="*{totalTickets}" name="totalTickets:" id="totalTickets" class="form-control" placeholder="Enter total number of tickets available" autofocus/>
+                <span  th:if="${isTotalTicketsValid == false}" style="color:red" align="right">Please mention total tickets for the event</span><br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="startTime">Event start time:</label>
+            </td>
+            <td>
+                <input type="time" th:field ="*{startTime}" name="startTime:" id="startTime" step="2" class="form-control" required autofocus/><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="endTime">Event end time:</label>
+            </td>
+            <td>
+                <input type="time" th:field ="*{endTime}" name="endTime:" id="endTime" step="2" class="form-control" required autofocus/><br>
+                <span  th:if="${isEventTimeValid == 1}" style="color:red" >Event end time occurs before start time</span><br>
+                <span  th:if="${isEventTimeValid == 0}" style="color:red" >Event start time cannot be same as end time</span><br>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="eventCity">City:</label></td>
+            <td>
+                <input type="text" th:field ="*{eventCity}" name="City:" id="eventCity" class="form-control" placeholder="Enter city" autofocus/>
+                <span  th:if="${isCityExistsInState == false}" style="color:red" th:align="right">City does not exist in state. Please enter correct city.</span><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="eventState">State:</label>
+            </td>
+            <td>
+                <select class="form-control" id="eventState" th:field ="*{eventState}" autofocus>
+                    <option value="Alberta">Alberta</option>
+                    <option value="BritishColumbia">British Columbia</option>
+                    <option value="Manitoba">Manitoba</option>
+                    <option value="NewBrunswick">New Brunswick</option>
+                    <option value="NewfoundlandAndLabrador">Newfoundland and Labrador</option>
+                    <option value="NorthwestTerritories">Northwest Territories</option>
+                    <option value="NovaScotia">Nova Scotia</option>
+                    <option value="Nunavut">Nunavut</option>
+                    <option value="Ontario">Ontario</option>
+                    <option value="PrinceEdwardIsland">Prince Edward Island</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Saskatchewan">Saskatchewan</option>
+                    <option value="Yukon">Yukon</option>
+                </select><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="ticketPrice">Ticket price per person:</label>
+            </td>
+            <td>
+                <span class="input-group-text">$</span>
+                <input type="text" th:field ="*{ticketPrice}" name="ticketPrice:" id="ticketPrice" autofocus/>
+                <span  th:if="${isTicketPriceValid==false}" style="color:red">Please specify ticket price..</span><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="eventDate">Event date:</label></td>
+            <td>
+                <input type="date" id="eventDate" name="eventDate" th:field ="*{eventDate}" required autofocus>
+                <span  th:if="${isEventDateValid == -1}" style="color:red" >Event date occurs before current date</span><br>
+                <span  th:if="${isEventDateValid == 0}" style="color:red" >Event date occurs cannot be same as current date</span><br>
+            </td>
+        </tr>
+
+        <input type="hidden" th:value="${userId}" name="userId" class="form control"><br>
+        <tr>
+            <td>
+                <label for="imageUpload">Upload Event Image: </label>
+                <small>(only .jpg,.jpeg or .png supported)</small>
+            </td>
+            <td>
+                <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" accept="image/png, image/jpeg" autofocus>
+                <span  th:if="${imageUploadInvalid == false}" style="color:red" >Please upload an event image</span><br>
+            </td>
+        </tr>
+        <tr>
+        <td>
+            <button type="submit" >Save</button><br>
+        </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

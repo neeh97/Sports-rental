@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>book ticket</title>
+</head>
+<body>
+<div>
+    <h1>Please check details before paying....</h1>
+    <table>
+        <tr>
+            <td>Number of tickets booked</td>
+            <td th:text="${eventAdvertisement.getTicketsBookedByUser()}"></td>
+        </tr>
+        <tr>
+            <td>Amount to be paid:</td>
+            <td th:text="${eventAdvertisement.getTicketTotalPrice()}"></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button"><a th:href="@{/ticket/book/confirm/{eventId}/{totalTicketPrice}/{tickets}(eventId=${eventId},tickets=${eventAdvertisement.getTicketsBookedByUser()},totalTicketPrice=${eventAdvertisement.getTicketTotalPrice()})}">Pay</a></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button"><a th:href="@{/getEvent/{eventId}(eventId=${eventId})}">Go back to previous page</a></button>
+            </td>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>

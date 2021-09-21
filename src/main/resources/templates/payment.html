@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>payment</title>
+</head>
+<body>
+<div align="center">
+    <table>
+        <tr>
+            <td>Product Name:</td>
+            <td><span th:text="${productAdvertisement.getProductName()}"></span></td>
+        </tr>
+        <tr>
+            <td>Product Description:</td>
+            <td><span th:text="${productAdvertisement.getProductDescription()}"></span></td>
+        </tr>
+        <tr>
+            <td>Rented from:</td>
+            <td><span th:text="${productAdvertisement.getStartDate()}"></span></td>
+        </tr>
+        <tr>
+            <td>Rented to:</td>
+            <td><span th:text="${productAdvertisement.getEndDate()}"></span></td>
+        </tr>
+        <tr>
+            <td>Total Amount:</td>
+            <td><span th:text="${payment.getAmount()}"></span></td>
+        </tr>
+    </table>
+    <!-- Referred this for payment page https://stackabuse.com/stripe-integration-with-java-spring-for-payment-processing/ -->
+    <form th:action="@{/payment/checkout/charge}" method="post" >
+    <script
+            src='https://checkout.stripe.com/checkout.js'
+            class='stripe-button'
+            th:attr='data-key=${StripePublicKey},
+         data-amount=${payment.getAmount()}'
+            data-name='Sports Rental Payment'
+            data-description='powered by Stripe'
+            data-locale='auto'>
+    </script>
+    </form>
+</div>
+</body>
+</html>

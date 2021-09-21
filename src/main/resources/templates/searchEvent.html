@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search page</title>
+</head>
+<body>
+<div class="form-group">
+    <form action="#" th:action="@{/searchEvents/text}" method="get">
+        <input type="text" th:name="searchText" name="searchText" class="form-control" placeholder="Search for event name...">
+        <button type="submit">Go</button>
+    </form>
+</div>
+<div class="form-group" align="right">
+    <label>Filters</label>
+    <form action="#" th:action="@{/searchEvents/filters}" th:object="${EventSearchFilter}" method="post">
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="location" name="location" th:field ="*{location}" autofocus>
+            <br /><br />
+        </div>
+        <div class="form-group">
+            <label>Ticket Price</label>
+            <input type="number" id="minPrice" name="minPrice" th:field ="*{minimumPrice}" placeholder="Minimum Price range">
+            <input type="number" id="maxPrice" name="maxPrice" th:field ="*{maximumPrice}" placeholder="Maximum Price range">
+            <br /><br />
+        </div>
+        <div class="form-group">
+            <button type="submit">Apply</button>
+        </div>
+    </form>
+</div>
+<div class="form-group">
+    <table name="allEventsTable" cellpadding="0" cellspacing="10">
+        <th>Name</th>
+        <th>Date</th>
+        <th>Ticket Price</th>
+        <th>Address</th>
+        <tr th:each="event :${events}">
+            <td><a th:href="@{/getEvent/{eventId}(eventId=${event.eventId})}" th:text="${event.eventName}"></a></td>
+            <td th:text="${event.eventDate}"></td>
+            <td th:text="${event.ticketPrice}"></td>
+            <td th:text="${event.eventAddress}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

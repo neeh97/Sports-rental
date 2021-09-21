@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+</head>
+<body>
+    <div class="form-group" align="right">
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+    <div class="form-group">
+        <label>Credits</label>
+        <p th:text="${credits}"></p>
+        <br/>
+    </div>
+    <div class="form-group">
+        <form action="#" th:action="@{/profile/topUp}" th:object="${creditTopup}" method="post">
+            <input type="number" th:field="*{creditAmount}" name="creditAmount" class="form-control" placeholder="Enter number of credits">
+            <button type="submit">Top Up</button>
+            <span th:if="${emptyCreditAmount == true}" style="color:red">Please enter an amount</span><br/>
+        </form>
+    </div>
+    <div class="form-group">
+        <form action="#" th:action="@{/profile/refund}" method="get">
+            <button type="submit">Refund Credits</button>
+        </form>
+    </div>
+    <div class="form-group" align="center">
+        <label>Rented Products History</label>
+        <table name="rentalHistory" cellpadding="0" cellspacing="10">
+            <th>Name</th>
+            <th>Rented Date</th>
+            <th>Returned Date</th>
+            <th>Amount</th>
+            <tr th:each="rental :${rentals}">
+                <td th:text="${rental.productName}"></td>
+                <td th:text="${rental.startDate}"></td>
+                <td th:text="${rental.endDate}"></td>
+                <td th:text="${rental.amount}"></td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <div class="form-group" align="center">
+        <label>Tickets for Events</label>
+        <table name="tickets" cellpadding="0" cellspacing="10">
+            <th>Event Name</th>
+            <th>Number of Tickets</th>
+            <tr th:each="ticket : ${tickets}">
+                <td th:text="${ticket.eventName}"></td>
+                <td th:text="${ticket.ticketsBooked}"></td>
+                <td><button><a th:href="@{payment/refund/{ticketId}/{paymentId}(ticketId=${ticket.ticketId},paymentId=${ticket.paymentId})}">Refund Ticket</a></button></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

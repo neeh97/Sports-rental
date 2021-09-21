@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form submit</title>
+</head>
+<body>
+    <div class="alert alert-success">
+        <h3><strong>Success!</strong> Your product advertisement has been uploaded successfully!</h3>
+        <span>Product name:</span><span th:text="${productAdvertisement.productName}"></span><br/>
+        <span>Available from:</span><span th:text="${productAdvertisement.startDate}"></span><br/>
+        <span>Available till:</span><span th:text="${productAdvertisement.endDate}"></span><br/>
+        <span>Product Description:</span><span th:text="${productAdvertisement.productDescription}"></span><br/>
+        <span>Product Brand:</span><span th:text="${productAdvertisement.brand}"></span><br/>
+        <span>Product category:</span><span th:text="${productAdvertisement.category}"></span><br/>
+        <span>Sports Type:</span><span th:text="${productAdvertisement.sportsType}"></span><br/>
+    </div>
+    </br>
+    <a th:href="@{/welcome}">Homepage</a>
+</body>
+</html>

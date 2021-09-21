@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>payment</title>
+</head>
+<body>
+<div align="center">
+<h1>Please select pay button to proceed</h1>
+    <a th:href="@{/payment/{rentedItemId}/{startDate}/{endDate}(rentedItemId=${rentedItemId},startDate=${startDate},endDate=${endDate})}">PAY</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Display</title>
+</head>
+<body>
+<div align="center">
+    <h1>Product Details</h1>
+    <br/><br/>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>Image</td>
+            <td> <img th:src="@{/getProductImage/{id}(id=${productId})}"></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><span th:text="${productAdvertisement.getProductName()}"></span></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><span th:text="${productAdvertisement.getProductDescription()}"></span></td>
+        </tr>
+        <tr>
+            <td>Brand</td>
+            <td th:text="${productAdvertisement.getBrand()}"></td>
+        </tr>
+        <tr>
+            <td>Cost</td>
+            <td th:text="${productAdvertisement.getRentalCost()}"></td>
+        </tr>
+        <tr>
+            <td>Category</td>
+            <td th:text="${productAdvertisement.getCategory()}"></td>
+        </tr>
+        <tr>
+            <td>Sports Type</td>
+            <td th:text="${productAdvertisement.getSportsType()}"></td>
+        </tr>
+        <tr>
+            <td>Available From</td>
+            <td th:text="${productAdvertisement.getStartDate()}"></td>
+        </tr>
+        <tr>
+            <td>Available till</td>
+            <td th:text="${productAdvertisement.getEndDate()}"></td>
+        </tr>
+
+        <tr>
+            <button type="button"><a th:href="@{/rent/{rentedItemId}(rentedItemId=${productId})}">Rent</a></button>
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>

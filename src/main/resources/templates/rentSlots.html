@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Rent</title>
+</head>
+<body>
+<div align="center">
+    <h1>Rental Page</h1>
+    <br />
+    <form action="#" th:action="@{/rentCalculation/{rentedItemId}(rentedItemId=${rentedItemId})}" th:object="${rental}">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Start Date</td>
+                <td><input type="date" th:field ="*{startDate}"><br></td>
+            </tr>
+            <tr>
+                <td>End Date</td>
+                <td><input type="date" th:field ="*{endDate}"><br></td>
+            </tr>
+             <span  th:if="${invalidDates== 0}" style="color:red">Please provide upcoming dates and start and end date cannot be on same day </span>
+             <span  th:if="${isAvailable == false}" style="color:red">Selected slots are not available...please select different slots </span>
+            <span  th:if="${isSufficientCredits == false}" style="color:red">Please recharge your credits to 200 to rent<a th:href="@{/profile}">Profile</a> </span>
+        </table>
+        <h2><button type="submit">Calculate Rental Amount</button> </h2><br/>
+    </form>
+</div>
+</body>

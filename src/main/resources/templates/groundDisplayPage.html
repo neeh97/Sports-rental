@@ -1,0 +1,60 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ground Display</title>
+</head>
+<body>
+<div align="center">
+    <h1>Ground Details</h1>
+    <br/><br/>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>Image</td>
+            <td> <img th:src="@{/getGroundImage/{id}(id=${groundId})}"></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><span th:text="${groundAdvertisement.getGroundName()}"></span></td>
+        </tr>
+        <tr>
+            <td>Seating Capacity</td>
+            <td><span th:text="${groundAdvertisement.getSeatingCapacity()}"></span></td>
+        </tr>
+        <tr>
+            <td>Size</td>
+            <td th:text="${groundAdvertisement.getSize()}"></td>
+        </tr>
+        <tr>
+            <td>Cost</td>
+            <td th:text="${groundAdvertisement.getRentalCost()}"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td th:text="${groundAdvertisement.getCity()}"></td>
+        </tr>
+        <tr>
+            <td>Sports Type</td>
+            <td th:text="${groundAdvertisement.getSportsType()}"></td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td th:text="${groundAdvertisement.getCity()}"></td>
+        </tr>
+        <tr>
+            <td>Available From</td>
+            <td th:text="${groundAdvertisement.getStartDate()}"></td>
+        </tr>
+        <tr>
+            <td>Available till</td>
+            <td th:text="${groundAdvertisement.getEndDate()}"></td>
+        </tr>
+
+        <tr>
+            <button type="button"><a th:href="@{/rent/{rentedItemId}(rentedItemId=${groundId})}">Rent</a></button>
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>

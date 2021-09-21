@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sign up</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<form class="form-horizontal" role="form" method="POST" th:action="@{/save}" th:object="${userRegistration}">
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="email">Email</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-envelope"></i></div>
+                    <input type="text" th:field="*{email}" class="form-control" id="email"
+                           placeholder="Enter valid email"  autofocus/>
+                    <span  th:if="${invalidEmail== false}" style="color:red">Invalid Email! Please provide valid email</span>
+                    <span  th:if="${invalidUser== false}" style="color:red">User already existed</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="password">Password</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group has-danger">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                    <input type="password" th:field="*{password}" class="form-control" id="password"
+                           placeholder="Password" required/>
+                    <span  th:if="${invalidPassword== false}" style="color:red">Invalid password..! Password must contain 8 characters</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="confirmPassword">Confirm Password</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group has-danger">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                    <input type="password" th:field="*{confirmPassword}" class="form-control" id="confirmPassword"
+                           placeholder="Confirm Password" required/>
+                    <span  th:if="${invalidConfirmPassword== false}" style="color:red">password mismatch..! Password and confirm password should match</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="firstName">First Name</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                    <input type="text" th:field="*{firstName}" class="form-control" id="firstName"
+                           placeholder="First Name" required autofocus>
+                    <span  th:if="${invalidFirstName== false}" style="color:red">Invalid First Name! Please provide valid first name</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="lastName">Last Name</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                    <input type="text" th:field="*{lastName}" class="form-control" id="lastName"
+                           placeholder="Last name" required autofocus>
+                    <span  th:if="${invalidLastName== false}" style="color:red">Invalid Last Name! Please provide valid last name</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="phoneNumber">Contact Number</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone"></i></div>
+                    <input type="text" th:field="*{phoneNumber}" class="form-control" id="phoneNumber"
+                           placeholder="Contact Number" required autofocus>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="email">City</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-map-marker"></i></div>
+                    <input type="text" th:field="*{city}" class="form-control" id="city"
+                           placeholder="Enter City" required autofocus/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="address">Address</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-map-marker"></i></div>
+                    <input type="text" th:field="*{address}" class="form-control" id="address"
+                           placeholder="Address"  autofocus>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <a th:href="@{/login}">Already have a account..!Login</a>
+        </div>
+    </div>
+</form>
+</body>
+</html>

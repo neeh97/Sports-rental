@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" />
+    <title>Ground Advertisement</title>
+</head>
+<body>
+<h1 align="center">Ground Advertisement</h1>
+<p align="right" th:text="'Hello, ' + ${userId} + '!'" ></p>
+<form action="#" th:action="@{/upload/ground}" th:object="${groundAdvertisement}" enctype="multipart/form-data" method="post">
+    <table border="2" align="center">
+        <tr>
+            <td><label for="groundName">Ground Name:</label></td>
+            <td><input type="text" th:field ="*{groundName}" name="Ground Name:" id="groundName" class="form-control" placeholder="Enter ground name" autofocus/>
+                <span  th:if="${groundNameInvalid == false}" style="color:red" align="right">Ground name cannot be empty</span><br></td>
+        </tr>
+        <tr>
+            <td><label for="address">Address:</label></td>
+            <td><textarea class="form-control"  id="address" rows="3" th:field ="*{address}" autofocus placeholder="Enter complete address"></textarea>
+                <span  th:if="${addressInvalid == false}" style="color:red" align="right">Please fill the address</span><br></td>
+        </tr>
+
+        <tr>
+            <td><label for="size">Size:</label></td>
+            <td><input type="text" th:field ="*{size}" name="size:" id="size" class="form-control" placeholder="Enter size" autofocus/><br></td>
+        </tr>
+        <tr>
+            <td><label for="size">Seating Capacity:</label></td>
+            <td><input type="text" th:field ="*{seatingCapacity}" name="seatingCapacity:" id="seatingCapacity" class="form-control" placeholder="Enter seating capacity" autofocus/><br>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="address">City:</label></td>
+            <td><input type="text" th:field ="*{city}" name="City:" id="city" class="form-control" placeholder="Enter city" autofocus/>
+                <span  th:if="${cityInvalid == false}" style="color:red" th:align="right">City does not exist in state. Please enter correct city.</span><br></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="state">State:</label></td>
+            <td>
+                <select class="form-control" id="state" th:field ="*{state}" autofocus>
+                    <option value="Alberta">Alberta</option>
+                    <option value="BritishColumbia">British Columbia</option>
+                    <option value="Manitoba">Manitoba</option>
+                    <option value="NewBrunswick">New Brunswick</option>
+                    <option value="NewfoundlandAndLabrador">Newfoundland and Labrador</option>
+                    <option value="NorthwestTerritories">Northwest Territories</option>
+                    <option value="NovaScotia">Nova Scotia</option>
+                    <option value="Nunavut">Nunavut</option>
+                    <option value="Ontario">Ontario</option>
+                    <option value="PrinceEdwardIsland">Prince Edward Island</option>
+                    <option value="Quebec">Quebec</option>
+                    <option value="Saskatchewan">Saskatchewan</option>
+                    <option value="Yukon">Yukon</option>
+                </select><br></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="rentalCost">Rent per day:</label></td>
+            <td><span class="input-group-text">$</span>
+                <input type="text" th:field ="*{rentalCost}" name="rentalCost:" id="rentalCost" autofocus/>
+                <span  th:if="${rentalCostInvalid==false}" style="color:red">Cost cannot be zero</span><br></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="startDate">Available from:</label></td>
+            <td><input type="date" id="startDate" name="startDate" th:field ="*{startDate}" required autofocus><br></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="endDate">Available till:</label></td>
+            <td><input type="date" id="endDate" name="endDate" th:field ="*{endDate}" required autofocus>
+                <span  th:if="${dateRangeInvalid == 1}" style="color:red" >Start date occurs after end date</span><br>
+                <span  th:if="${dateRangeInvalid == 0}" style="color:red" >Start date and end date are same</span><br></td>
+        </tr><br>
+        <td>
+            <label for="sportsType">Type of sports:</label></td>
+        <td><select class="form-control" id="sportsType" th:field ="*{sportsType}" autofocus>
+            <option value="Basketball">Basketball</option>
+            <option value="Football">Football</option>
+            <option value="Hockey">Hockey</option>
+            <option value="Camping&Hiking">Camping & Hiking</option>
+            <option value="Cycling">Cycling</option>
+            <option value="Golf">Golf</option>
+            <option value="Fishing">Fishing</option>
+            <option value="Cricket">Cricket</option>
+            <option value="Volleyball">Volleyball</option>
+            <option value="Skating">Skating</option>
+            <option value="Skateboarding">Skateboarding</option>
+            <option value="Bowling">Bowling</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Fitness&Exercise">Fitness & Exercise</option>
+            <option value="Tennis">Tennis</option>
+            <option value="Others">Others</option>
+        </select><br></td>
+        </tr>
+        <input type="hidden" th:value="${userId}" name="userId" class="form control"><br>
+        <tr>
+            <td>
+                <label for="imageUpload">Upload Ground Image: </label>
+                <small>(only .jpg,.jpeg or .png supported)</small></td>
+            <td><input type="file" class="form-control-file" id="imageUpload" name="imageUpload" accept="image/png, image/jpeg" autofocus>
+                <span  th:if="${imageUploadInvalid == false}" style="color:red" >Please upload an product image</span><br></td>
+
+        <tr><td><button type="submit" >Save</button><br></td></tr>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

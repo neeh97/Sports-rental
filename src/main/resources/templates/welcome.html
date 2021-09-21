@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8" />
+    <title>Welcome Page</title>
+</head>
+<body>
+<div class="form-group" align="right">
+    <a th:href="@{/profile}">My Profile</a>
+</div>
+<div align="center">
+    <br />
+    <h1>Welcome to Sports Rental</h1></br>
+    <button><a th:href="@{/upload/product}">Upload Product Advertisement</a></button></br>
+    <button><a th:href="@{/upload/ground}">Upload Ground Advertisement</a></button></br>
+    <button><a th:href="@{/upload/event}">Upload Event Advertisement</a></button>
+    <br/>
+    <a th:href="@{/search}">Search Products</a>
+    <a th:href="@{/searchGrounds}">Search Grounds</a>
+    <a th:href="@{/searchEvents}">Search Events</a>
+</div>
+</body>
+</html>

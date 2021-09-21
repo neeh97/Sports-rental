@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form submit</title>
+</head>
+<body>
+<div class="alert alert-success">
+    <h3><strong>Success!</strong> Your event advertisement has been uploaded successfully!</h3>
+    <span>Event name:</span><span th:text="${eventAdvertisement.eventName}"></span><br/>
+    <span>Event date:</span><span th:text="${eventAdvertisement.eventDate}"></span><br/>
+    <span>Event start time:</span><span th:text="${eventAdvertisement.startTime}"></span><br/>
+    <span>Event end time:</span><span th:text="${eventAdvertisement.endTime}"></span><br/>
+    <span>Address:</span><span th:text="${eventAdvertisement.eventAddress}"></span><br/>
+    <span>City:</span><span th:text="${eventAdvertisement.eventCity}"></span><br/>
+    <span>State:</span><span th:text="${eventAdvertisement.eventState}"></span><br/>
+    <span>Ticket price:</span><span th:text="${eventAdvertisement.ticketPrice}"></span><br/>
+    <span>Total Seats:</span><span th:text="${eventAdvertisement.totalTickets}"></span><br/>
+</div>
+</br>
+<a th:href="@{/welcome}">Homepage</a>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Event Display</title>
+</head>
+<body>
+<div align="center">
+    <h1>Event Details</h1>
+    <br/><br/>
+    <form action="#" th:action="@{/ticket/book}" th:object="${eventAdvertisement}" method="post">
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>Image</td>
+            <td> <img th:src="@{/getEventImage/{id}(id=${eventId})}"></td>
+        </tr>
+        <tr>
+            <td>Event Name</td>
+            <td><span th:text="${eventAdvertisement.getEventName()}"></span></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td th:text="${eventAdvertisement.getEventAddress()}"></td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td th:text="${eventAdvertisement.getEventCity()}"></td>
+        </tr>
+        <tr>
+            <td>Event Date</td>
+            <td th:text="${eventAdvertisement.getEventDate()}"></td>
+        </tr>
+        <tr>
+            <td>Event start time:</td>
+            <td th:text="${eventAdvertisement.getStartTime()}"></td>
+        </tr>
+        <tr>
+            <td>Event end time:</td>
+            <td th:text="${eventAdvertisement.getEndTime()}"></td>
+        </tr>
+        <tr>
+            <td>Tickets left</td>
+            <td th:text="${eventAdvertisement.getTicketsLeft()}"></td>
+        </tr>
+        <tr>
+            <td>Ticket Price</td>
+            <td th:text="${eventAdvertisement.getTicketPrice()}"></td>
+        </tr>
+        <tr>
+            <td>Enter number of tickets to book:</td>
+            <td>
+                <input type="number" th:field ="*{ticketsBookedByUser}" name="ticketsBookedByUser" id="ticketsBookedByUser" class="form-control" min="1" max="10" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <button type="submit">Book</button>
+            </td>
+        </tr>
+        <input type="hidden" th:value="${eventId}" name="eventId" class="form control">
+
+    </table>
+    </form>
+</div>
+</body>
+</html>

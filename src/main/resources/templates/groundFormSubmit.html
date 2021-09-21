@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form submit</title>
+</head>
+<body>
+<div class="alert alert-success">
+    <h3><strong>Success!</strong> Your ground advertisement has been uploaded successfully!</h3>
+    <span>Ground name:</span><span th:text="${groundAdvertisement.groundName}"></span><br/>
+    <span>Available from:</span><span th:text="${groundAdvertisement.startDate}"></span><br/>
+    <span>Available till:</span><span th:text="${groundAdvertisement.endDate}"></span><br/>
+    <span>Address:</span><span th:text="${groundAdvertisement.address}"></span><br/>
+    <span>City:</span><span th:text="${groundAdvertisement.city}"></span><br/>
+    <span>State:</span><span th:text="${groundAdvertisement.state}"></span><br/>
+    <span>Sports Type:</span><span th:text="${groundAdvertisement.sportsType}"></span><br/>
+    <span>Seating Capacity:</span><span th:text="${groundAdvertisement.seatingCapacity}"></span><br/>
+    <span>Size:</span><span th:text="${groundAdvertisement.size}"></span><br/>
+</div>
+</br>
+<a th:href="@{/welcome}">Homepage</a>
+</body>
+</html>

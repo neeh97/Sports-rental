@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search page</title>
+</head>
+<body>
+    <div class="form-group">
+        <form action="#" th:action="@{/search/text}" method="get">
+            <input type="text" th:name="searchText" name="searchText" class="form-control" placeholder="Search for product name...">
+            <button type="submit">Go</button>
+        </form>
+    </div>
+    <div class="form-group" align="right">
+        <label>Filters</label>
+        <form action="#" th:action="@{/search/filters}" th:object="${SearchFilter}" method="post">
+            <div class="form-group">
+                <br>
+                <label>Category</label>
+                <select class="form-control" id="category" name="category" th:field ="*{category}"  autofocus>
+                    <option value="" selected></option>
+                    <option value="clothing">Clothing</option>
+                    <option value="equipment">Equipment</option>
+                </select><br><br>
+            </div>
+            <div class="form-group">
+                <label>Type of sports:</label>
+                <select class="form-control" id="sportsType" name="sportsType" th:field ="*{sportsType}" autofocus>
+                    <option value="" selected></option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Football">Football</option>
+                    <option value="Hockey">Hockey</option>
+                    <option value="Camping&Hiking">Camping & Hiking</option>
+                    <option value="Cycling">Cycling</option>
+                    <option value="Golf">Golf</option>
+                    <option value="Fishing">Fishing</option>
+                    <option value="Cricket">Cricket</option>
+                    <option value="Volleyball">Volleyball</option>
+                    <option value="Skating">Skating</option>
+                    <option value="Skateboarding">Skateboarding</option>
+                    <option value="Bowling">Bowling</option>
+                    <option value="Swimming">Swimming</option>
+                    <option value="Fitness&Exercise">Fitness & Exercise</option>
+                    <option value="Tennis">Tennis</option>
+                    <option value="Others">Others</option>
+                </select><br><br>
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" id="location" name="location" th:field ="*{location}" autofocus>
+                <br /><br />
+            </div>
+            <div class="form-group">
+                <button type="submit">Apply</button>
+            </div>
+        </form>
+    </div>
+    <!-- Referred link : https://www.baeldung.com/thymeleaf-iteration -->
+    <div class="form-group">
+        <table name="allProductsTable" cellpadding="0" cellspacing="10">
+            <th>Name</th>
+            <th>Category</th>
+            <th>Brand</th>
+            <th>Sports</th>
+            <tr th:each="product :${products}">
+                <td><a th:href="@{/getProduct/{productId}(productId=${product.id})}" th:text="${product.productName}"></a></td>
+                <td th:text="${product.category}"></td>
+                <td th:text="${product.brand}"></td>
+                <td th:text="${product.sportsType}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

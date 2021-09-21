@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Rent</title>
+</head>
+<body>
+<div align="center">
+    <h1>Rental Page</h1>
+    <br />
+    <form action="#" th:action="@{/upload/rent/{rentedItemId}/{startDate}/{endDate}(rentedItemId=${rentedItemId},startDate=${startDate},endDate=${endDate})}"  method="post">
+    <table border="1" cellpadding="10" th:object="${rentAmount}">
+        </tr>
+        <tr>
+            <td>Total rent amount for selected </td>
+            <td><span th:text="${rentAmount}"></span></td>
+        </tr>
+    </table>
+        <button name ="button">OK</button>
+   </form>
+</div>
+</body>
+</html>
