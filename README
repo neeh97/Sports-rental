@@ -1,0 +1,5 @@
+This project was done by a 3-man team as part of the coursework for Advanced Software Development course. The goal of this course was to learn the concepts of Object-oriented programming, design patterns, unit testing and other software development topics.
+
+The UI was not a priority, all webpages are rendered using Thymeleaf. The framework used is Springboot which communicates with a University provided MySQL server for storing data.
+
+The website lets users upload sports products along with their details like images, price, availabilty, category etc. These products can be viewed and rented by any user who is logged in to the same city. The product is then made unavailable for any others for the dates it has been rented.
